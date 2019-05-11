@@ -33,6 +33,8 @@
 	</dependencies>
 	
 	<modules>
-		<module>MuzixService</module>
+		<!-- <module>MuzixService</module> -->
+		<module>authenticationservice</module>
+		<module>usertrackservice</module>
 	</modules>
 </project>
