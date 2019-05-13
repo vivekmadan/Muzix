@@ -5,4 +5,4 @@ ENV MYSQL_USER=approot
 ENV MYSQL_PASSWORD=root
 ENV MYSQL_URL=jdbc:mysql://localhost:3306/UserDb
 ADD ./target/authenticationservice-0.0.1-SNAPSHOT.jar /usr/src/authenticationservice-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","jar","authenticationservice-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","authenticationservice-0.0.1-SNAPSHOT.jar"]
