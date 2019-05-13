@@ -7,5 +7,9 @@
           <button class="mat-menu-item-spain" [routerLink]="['/Spain']" mat-menu-item>Spain</button>
         </mat-menu>
       <button class="mat-button-wishlist" [routerLink]="['/WishList']" mat-button>WishList</button>
+      <button 
+      class="mat-button-logout" 
+      mat-button 
+      (click)="logout()">Logout</button>
   </mat-toolbar-row>
 </mat-toolbar>

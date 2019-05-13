@@ -1,23 +1,50 @@
 version: '3'
 services:
- Spring:
-  image: vivekmadan/muzixservicebackend:v1
+ authService:
+  image: authimage
+  build: authenticationservice/
   restart: always
   network_mode: host
-  container_name: spring-image 
+  container_name: authServiceCon
+  depends_on:
+   - mysql
+  ports:
+   - 8083:8083
+   
+ userTrackService:
+  image: usertrackservice
+  build: usertrackservice/
+  restart: always
+  network_mode: host
+  container_name: userTrackCon
   depends_on:
    - mongo
   ports:
-   - 8080:8083
+   - 8081:8081
+ 
+ mysql:
+  image: mysql:5.5
+  ports:
+   - 3306:3306
+  container_name: mysql_container
+  network_mode: host
+  environment:
+   MYSQL_ROOT_PASSWORD: root
+   MYSQL_DATABASE: UserDb
+   MYSQL_USER: root
+   MYSQL_PASSWORD: root
+  
  angular:
-  image: vivekmadan/muzixservicefrontend:v1
+  image: angular:0.0.1
+  build: ./
   network_mode: host
   container_name: angular_docker
   ports:
    - 8080:8080
+   
  mongo:
   image: mongo:3.2-jessie
   ports:
-   - "27017:27017"
+   - 27017:27017
   container_name: mongo 
   network_mode: host

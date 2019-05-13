@@ -27,6 +27,27 @@ describe('workspace-project App', () => {
     expect(browser.getTitle()).toEqual('MuzixApplication');
   });
 
+  it("should be redirected to /login route", () => {
+    browser.element(by.css(".register-user")).click();
+    expect(browser.getCurrentUrl()).toContain("/register");
+    browser.driver.sleep(1000);
+  });
+
+  it("should be able to register user", () => {
+    browser.element(by.id("username")).sendKeys("test123");
+    browser.element(by.id("email")).sendKeys("test123");
+    browser.element(by.id("password")).sendKeys("test123");
+    browser.element(by.css(".register-user")).click();
+    browser.driver.sleep(1000);
+  });
+
+  it("should be able to login user", () => {
+    browser.element(by.id("username")).sendKeys("test123");
+    browser.element(by.id("password")).sendKeys("test123");
+    browser.element(by.css(".login-click")).click();
+    browser.driver.sleep(1000);
+  });
+
   it('should be able to click menu item for India', () => {
       browser.element(by.css('.mat-button')).click();
       browser.driver.sleep(1000);
@@ -90,6 +111,12 @@ browser.element(by.css(".matInput")).sendKeys("New Comments");
 browser.sleep(1000);
 browser.element(by.css(".updateCommentDemo")).click();
 browser.sleep(1000);
+});
+
+it("should be able to logou from application", () => {
+  browser.driver.sleep(500);
+  browser.element(by.css(".mat-button-logout")).click();
+  browser.driver.sleep(5000);
 });
 
 });
