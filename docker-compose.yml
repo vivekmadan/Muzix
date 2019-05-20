@@ -8,7 +8,7 @@ services:
    - mysql
    - eurekaServer
   ports:
-   - 8083:8083
+   - "8083:8083"
    
  userTrackService:
   image: vivekmadan/usertrackservicev2:v2
@@ -18,21 +18,21 @@ services:
    - mongo
    - eurekaServer
   ports:
-   - 8089:8089
+   - "8089:8089"
  
  eurekaServer:
   image: vivekmadan/eurekaservice:v1
   restart: always
   network_mode: host
   ports:
-   - 9003:9003
+   - "9003:9003"
  
  zuulService:
   image: vivekmadan/zuulservice:v1
   restart: always
   network_mode: host
   ports:
-   - 8881:8881
+   - "8881:8881"
  
  orchestrationService:
   image: vivekmadan/orchestrationservice:v1
@@ -41,17 +41,17 @@ services:
   depends_on:
    - eurekaServer
   ports:
-   - 8888:8888
+   - "8888:8888"
  
  mysql:
   image: mysql:5.5
   ports:
-   - 3306:3306
+   - "3306:3306"
   network_mode: host
   environment:
    MYSQL_ROOT_PASSWORD: root
    MYSQL_DATABASE: UserDb
-   MYSQL_USER: root
+   MYSQL_USER: approot
    MYSQL_PASSWORD: root
   
  angular:
@@ -59,11 +59,11 @@ services:
   network_mode: host
   container_name: angular_docker
   ports:
-   - 8080:8080
+   - "8080:8080"
    
  mongo:
   image: mongo:3.2-jessie
   ports:
-   - 27017:27017
+   - "27017:27017"
   container_name: mongo 
   network_mode: host
