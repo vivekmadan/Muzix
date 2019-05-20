@@ -27,9 +27,9 @@ export class RegisterComponent implements OnInit {
     this.authService.registerUser(this.user).subscribe(data=>{
       if(data.status === 201){
         this.snackBar.open("Successfully Registered", "", {duration: 1000});
-        this.authService.saveUser(this.user).subscribe(saveData=>{
-          console.log("Save Data: " + saveData);
-        });
+        // this.authService.saveUser(this.user).subscribe(saveData=>{
+        //   console.log("Save Data: " + saveData);
+        // });
 
         this.router.navigate(["/login"]);
       }

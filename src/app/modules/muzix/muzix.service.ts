@@ -17,7 +17,8 @@ export class MuzixService {
     this.thirdPartyApi = 'http://ws.audioscrobbler.com/2.0/?method=geo.gettoptracks&country=';
     this.thirdPartyKey = '&api_key=573bc5ead37a2703cd8f0d4a64f21937&format=json';
     //this.springEndPoint = 'http://localhost:8081/api/v1/muzixservice/';
-    this.springEndPoint = 'http://localhost:8081/api/v1/usertrackservice/';
+    //this.springEndPoint = 'http://localhost:8089/api/v1/usertrackservice/';
+    this.springEndPoint = 'http://localhost:8881/usertrackservice/api/v1/usertrackservice/';
    }
 
    getTrackDetails(countryName: string): Observable<any>{

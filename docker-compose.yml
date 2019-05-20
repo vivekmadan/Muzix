@@ -1,32 +1,52 @@
 version: '3'
 services:
  authService:
-  image: authimage
-  build: authenticationservice/
+  image: vivekmadan/authservice:v1
   restart: always
   network_mode: host
-  container_name: authServiceCon
   depends_on:
    - mysql
+   - eurekaServer
   ports:
    - 8083:8083
    
  userTrackService:
-  image: usertrackservice
-  build: usertrackservice/
+  image: vivekmadan/usertrackservicev2:v2
   restart: always
   network_mode: host
-  container_name: userTrackCon
   depends_on:
    - mongo
+   - eurekaServer
   ports:
-   - 8081:8081
+   - 8089:8089
+ 
+ eurekaServer:
+  image: vivekmadan/eurekaservice:v1
+  restart: always
+  network_mode: host
+  ports:
+   - 9003:9003
+ 
+ zuulService:
+  image: vivekmadan/zuulservice:v1
+  restart: always
+  network_mode: host
+  ports:
+   - 8881:8881
+ 
+ orchestrationService:
+  image: vivekmadan/orchestrationservice:v1
+  restart: always
+  network_mode: host
+  depends_on:
+   - eurekaServer
+  ports:
+   - 8888:8888
  
  mysql:
   image: mysql:5.5
   ports:
    - 3306:3306
-  container_name: mysql_container
   network_mode: host
   environment:
    MYSQL_ROOT_PASSWORD: root
@@ -35,8 +55,7 @@ services:
    MYSQL_PASSWORD: root
   
  angular:
-  image: angular:0.0.1
-  build: ./
+  image: vivekmadan/angularregister:v1
   network_mode: host
   container_name: angular_docker
   ports:

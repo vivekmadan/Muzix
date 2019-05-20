@@ -36,5 +36,8 @@
 		<!-- <module>MuzixService</module> -->
 		<module>authenticationservice</module>
 		<module>usertrackservice</module>
+    <module>eurkaserverdemo</module>
+    <module>orchestrationservice</module>
+    <module>zuulservice</module>
 	</modules>
 </project>
