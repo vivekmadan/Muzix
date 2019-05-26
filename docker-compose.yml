@@ -9,22 +9,21 @@ services:
    test: "exit 0"
 
  authService:
-  image: authservicefinal
-  build: authenticationservice/
+  image: vivekmadan/authservicefinal:v1
   restart: always
   network_mode: host
   depends_on:
    - mysql
    - eurekaServer
    - rabbitmq
+   - userTrackService
   ports:
    - "8083:8083"
   healthcheck:
     test: "exit 0"
    
  userTrackService:
-  image: usertrackservicefinal
-  build: usertrackservice/
+  image: vivekmadan/usertrackservicefinal:v1
   restart: always
   network_mode: host
   depends_on:
@@ -68,8 +67,7 @@ services:
     test: "exit 0"
   
  angular:
-  image: angularfinal
-  build: ./
+  image: vivekmadan/angulafinal:v1
   network_mode: host
   container_name: angular_docker
   ports:
