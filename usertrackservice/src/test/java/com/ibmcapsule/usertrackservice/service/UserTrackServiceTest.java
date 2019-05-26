@@ -1,5 +1,6 @@
 package com.ibmcapsule.usertrackservice.service;
 
+import com.ibmcapsule.usertrackservice.config.Producer;
 import com.ibmcapsule.usertrackservice.domain.Artist;
 import com.ibmcapsule.usertrackservice.domain.Image;
 import com.ibmcapsule.usertrackservice.domain.Track;
@@ -24,6 +25,9 @@ public class UserTrackServiceTest {
 
   @Mock
   private UserTrackRepository userTrackRepository;
+
+  @Mock
+  Producer producer;
 
   private User user;
   private Track track;

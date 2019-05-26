@@ -1,23 +1,17 @@
-package com.ibmcapsule.usertrackservice.domain;
+package com.ibmcapsule.rabbitMq.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.data.annotation.Id;
+public class ImageDTO {
 
-public class Image {
-
-  @Id
   private int imageId;
 
-  @JsonProperty("text")
   private String imageUrl;
 
-  @JsonProperty("size")
   private String imageSpec;
 
-  public Image() {
+  public ImageDTO() {
   }
 
-  public Image(int imageId, String imageUrl, String imageSpec) {
+  public ImageDTO(int imageId, String imageUrl, String imageSpec) {
     this.imageId = imageId;
     this.imageUrl = imageUrl;
     this.imageSpec = imageSpec;

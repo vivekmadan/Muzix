@@ -3,6 +3,7 @@
 
 html, body{
     height: 100%;
+    width: 100vw; overflow-x: hidden;
 }
 
 body{
@@ -11,4 +12,66 @@ body{
 }
 .mat-form-field-appearance-outline .mat-form-field-outline-thick {
     color: #9c1148;
+}
+
+@media(max-width:575px){
+    .mat-button{
+        font-size: 0.9em !important;
+    }
+
+    .image-class {
+        height: 7vh !important;
+    }
+
+    .example-card {
+        width: 70vw !important;
+    }
+
+    .image {
+        width: 60vw !important;
+    }
+
+    .mat-menu-item {
+        font-size: 0.9em !important;
+    }
+
+    .mat-card {
+        width: 70vw !important;
+        height: 48vh !important;
+        margin-bottom: 18vh !important;
+    }
+
+    .mat-card-actions .mat-button:first-child, .mat-card-actions .mat-raised-button:first-child {
+        margin-right: 10vw !important;
+    }
+
+    .my-form {
+        width: 55vw !important;
+    }
+
+    .mat-card-header .mat-card-title {
+        margin-bottom: 5vh !important;
+    }
+
+    .mat-form-field.field {
+        padding-left: 12vw !important;
+    }
+}
+
+@media(min-width:576px) and (max-width:768px) {
+    .mat-card {
+        margin-bottom: 14vh !important;
+    }
+
+    .example-card {
+        width: 25vw !important;
+    }
+
+    .image {
+        width: 20vw !important;
+    }
+
+    .mat-form-field.field {
+        padding-left: 68vw !important;
+    }
 }

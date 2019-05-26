@@ -25,11 +25,11 @@ public class UserController {
     this.securityTokenGenerator = securityTokenGenerator;
   }
 
-  @PostMapping("/save")
+ /* @PostMapping("/save")
   public ResponseEntity saveUser(@RequestBody User user){
     userService.saveUser(user);
     return responseEntity = new ResponseEntity(user, HttpStatus.CREATED);
-  }
+  }*/
 
   @PostMapping("/login")
   public ResponseEntity loginUser(@RequestBody User user) throws UserNotFoundException {

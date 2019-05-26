@@ -36,7 +36,7 @@ public class UserTrackController {
 
   @PostMapping("/user/{username}/track")
   public ResponseEntity saveUserTrackToWishList(@RequestBody Track track, @PathVariable("username") String username) throws TrackAlreadyExistException{
-    System.out.println("Username: "+ username + "Track: " + track);
+    System.out.println("Username: "+ username + "TrackDTO: " + track);
     try
     {
       User user = userTrackService.saveUserTrackToWishlist(track, username);

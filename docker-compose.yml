@@ -1,24 +1,40 @@
 version: '3'
 services:
+ rabbitmq:
+  image: rabbitmq:management
+  ports:
+   - "5672:5672"
+   - "15672:15672"
+  healthcheck:
+   test: "exit 0"
+
  authService:
-  image: vivekmadan/authservice:v1
+  image: authservicefinal
+  build: authenticationservice/
   restart: always
   network_mode: host
   depends_on:
    - mysql
    - eurekaServer
+   - rabbitmq
   ports:
    - "8083:8083"
+  healthcheck:
+    test: "exit 0"
    
  userTrackService:
-  image: vivekmadan/usertrackservicev2:v2
+  image: usertrackservicefinal
+  build: usertrackservice/
   restart: always
   network_mode: host
   depends_on:
    - mongo
    - eurekaServer
+   - rabbitmq
   ports:
    - "8089:8089"
+  healthcheck:
+    test: "exit 0"
  
  eurekaServer:
   image: vivekmadan/eurekaservice:v1
@@ -26,6 +42,8 @@ services:
   network_mode: host
   ports:
    - "9003:9003"
+  healthcheck:
+    test: "exit 0"
  
  zuulService:
   image: vivekmadan/zuulservice:v1
@@ -33,15 +51,8 @@ services:
   network_mode: host
   ports:
    - "8881:8881"
- 
- orchestrationService:
-  image: vivekmadan/orchestrationservice:v1
-  restart: always
-  network_mode: host
-  depends_on:
-   - eurekaServer
-  ports:
-   - "8888:8888"
+  healthcheck:
+    test: "exit 0"
  
  mysql:
   image: mysql:5.5
@@ -53,13 +64,18 @@ services:
    MYSQL_DATABASE: UserDb
    MYSQL_USER: approot
    MYSQL_PASSWORD: root
+  healthcheck:
+    test: "exit 0"
   
  angular:
-  image: vivekmadan/angularregister:v1
+  image: angularfinal
+  build: ./
   network_mode: host
   container_name: angular_docker
   ports:
    - "8080:8080"
+  healthcheck:
+   test: "exit 0"
    
  mongo:
   image: mongo:3.2-jessie
@@ -67,3 +83,5 @@ services:
    - "27017:27017"
   container_name: mongo 
   network_mode: host
+  healthcheck:
+   test: "exit 0"

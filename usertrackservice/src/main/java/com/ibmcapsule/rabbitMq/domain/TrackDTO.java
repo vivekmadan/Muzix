@@ -1,29 +1,22 @@
-package com.ibmcapsule.usertrackservice.domain;
+package com.ibmcapsule.rabbitMq.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.data.annotation.Id;
-
-public class Track {
-  @Id
+public class TrackDTO {
   private String trackId;
 
-  @JsonProperty("name")
   private String trackName;
 
   private String comments;
 
-  @JsonProperty("listeners")
   private String trackListeners;
 
-  @JsonProperty("url")
   private String trackUrl;
 
-  private Artist artist;
+  private ArtistDTO artist;
 
-  public Track() {
+  public TrackDTO() {
   }
 
-  public Track(String trackId, String trackName, String comments, String trackListeners, String trackUrl, Artist artist) {
+  public TrackDTO(String trackId, String trackName, String comments, String trackListeners, String trackUrl, ArtistDTO artist) {
     this.trackId = trackId;
     this.trackName = trackName;
     this.comments = comments;
@@ -72,11 +65,11 @@ public class Track {
     this.trackUrl = trackUrl;
   }
 
-  public Artist getArtist() {
+  public ArtistDTO getArtist() {
     return artist;
   }
 
-  public void setArtist(Artist artist) {
+  public void setArtist(ArtistDTO artist) {
     this.artist = artist;
   }
 

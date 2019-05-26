@@ -14,7 +14,8 @@ private SpringLoginEndPoint: string;
   constructor(private httpClient: HttpClient) {
     // this.SpringRegisterEndPoinst = "http://localhost:8089/api/v1/usertrackservice/";
     // this.SpringSaveEndPoint = "http://localhost:8083/api/v1/userservice/";
-    this.SpringRegisterEndPoinst = "http://localhost:8881/orchestrationservice/api/v1/user";
+    //this.SpringRegisterEndPoinst = "http://localhost:8881/orchestrationservice/api/v1/user";
+    this.SpringRegisterEndPoinst = "http://localhost:8881/usertrackservice/api/v1/usertrackservice/register";
     this.SpringLoginEndPoint = "http://localhost:8881/authenticationsrvice/api/v1/userservice/login";
    }
 

@@ -1,26 +1,19 @@
-package com.ibmcapsule.usertrackservice.domain;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.ibmcapsule.rabbitMq.domain;
 
 import java.util.List;
 
-@Document
-public class User {
+public class UserDTO {
 
-  @Id
   private String username;
   private String email;
   private String password;
-  private List<Track> trackList;
 
-  public User() {
+  public UserDTO() {
   }
 
-  public User(String username, String email, List<Track> trackList) {
+  public UserDTO(String username, String email) {
     this.username = username;
     this.email = email;
-    this.trackList = trackList;
   }
 
   public String getUsername() {
@@ -39,14 +32,6 @@ public class User {
     this.email = email;
   }
 
-  public List<Track> getTrackList() {
-    return trackList;
-  }
-
-  public void setTrackList(List<Track> trackList) {
-    this.trackList = trackList;
-  }
-
   public String getPassword() {
     return password;
   }
@@ -60,7 +45,6 @@ public class User {
     return "UserDTO{" +
       "username='" + username + '\'' +
       ", email='" + email + '\'' +
-      ", trackList=" + trackList +
       '}';
   }
 }

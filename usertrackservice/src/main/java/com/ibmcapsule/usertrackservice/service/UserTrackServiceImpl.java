@@ -1,5 +1,7 @@
 package com.ibmcapsule.usertrackservice.service;
 
+import com.ibmcapsule.rabbitMq.domain.UserDTO;
+import com.ibmcapsule.usertrackservice.config.Producer;
 import com.ibmcapsule.usertrackservice.domain.Track;
 import com.ibmcapsule.usertrackservice.domain.User;
 import com.ibmcapsule.usertrackservice.exception.TrackAlreadyExistException;
@@ -18,6 +20,9 @@ public class UserTrackServiceImpl implements UserTrackService {
   @Autowired
   private UserTrackRepository userTrackRepository;
 
+  @Autowired
+  private Producer producer;
+
   @Override
   public User saveUserTrackToWishlist(Track track, String userName) throws TrackAlreadyExistException {
       User fetchedUser = userTrackRepository.findByUsername(userName);
@@ -31,9 +36,17 @@ public class UserTrackServiceImpl implements UserTrackService {
         } else {
           trackList = new ArrayList<>();
         }
+          UserDTO userDTO = new UserDTO();
+          userDTO.setUsername(fetchedUser.getUsername());
+          userDTO.setEmail(fetchedUser.getEmail());
+          List list = new ArrayList();
+          list.add(track);
+          userDTO.setTrackList(list);
+
           trackList.add(track);
           fetchedUser.setTrackList(trackList);
           userTrackRepository.save(fetchedUser);
+          producer.sendTrackInfoToRabbitMq(userDTO);
 
 
     return fetchedUser;
@@ -96,6 +109,11 @@ public class UserTrackServiceImpl implements UserTrackService {
 
   @Override
   public User registerUser(User user) throws UserAlreadyExistException {
+    UserDTO userDTO = new UserDTO();
+    userDTO.setUsername(user.getUsername());
+    userDTO.setEmail(user.getEmail());
+    userDTO.setPassword(user.getPassword());
+
     User fetchedUser = userTrackRepository.findByUsername(user.getUsername());
     if(fetchedUser != null)
     {
@@ -104,6 +122,7 @@ public class UserTrackServiceImpl implements UserTrackService {
     else
     {
       userTrackRepository.save(user);
+      producer.sendMessageToRabbitMq(userDTO);
     }
     return user;
   }

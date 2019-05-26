@@ -1,25 +1,19 @@
-package com.ibmcapsule.usertrackservice.domain;
+package com.ibmcapsule.rabbitMq.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.data.annotation.Id;
+public class ArtistDTO {
 
-public class Artist {
-
-  @Id
   private String artistId;
 
-  @JsonProperty("name")
   private String artistName;
 
-  @JsonProperty("url")
   private String url;
 
-  private Image image;
+  private ImageDTO image;
 
-  public Artist() {
+  public ArtistDTO() {
   }
 
-  public Artist(String artistId, String artistName, String url, Image image) {
+  public ArtistDTO(String artistId, String artistName, String url, ImageDTO image) {
     this.artistId = artistId;
     this.artistName = artistName;
     this.url = url;
@@ -50,11 +44,11 @@ public class Artist {
     this.url = url;
   }
 
-  public Image getImage() {
+  public ImageDTO getImage() {
     return image;
   }
 
-  public void setImage(Image image) {
+  public void setImage(ImageDTO image) {
     this.image = image;
   }
 
