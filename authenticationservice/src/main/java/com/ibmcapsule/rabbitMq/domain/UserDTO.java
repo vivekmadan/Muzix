@@ -1,7 +1,5 @@
 package com.ibmcapsule.rabbitMq.domain;
 
-import java.util.List;
-
 public class UserDTO {
 
   private String username;

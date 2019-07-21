@@ -5,7 +5,8 @@ mat-card{
 	width: 40vw;
 	text-align: center;
 	background-color: #424242;
-	margin: auto;
+    margin: auto;
+    margin-top: 15vh;
 	margin-bottom: 20vh;
 }
 

@@ -113,7 +113,7 @@ browser.element(by.css(".updateCommentDemo")).click();
 browser.sleep(1000);
 });
 
-it("should be able to logou from application", () => {
+it("should be able to logout from application", () => {
   browser.driver.sleep(500);
   browser.element(by.css(".mat-button-logout")).click();
   browser.driver.sleep(5000);

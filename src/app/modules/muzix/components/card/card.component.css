@@ -37,3 +37,7 @@
 .material-icons{
     color: #fff;
 }
+
+.deleteButton {
+    color: red;
+}

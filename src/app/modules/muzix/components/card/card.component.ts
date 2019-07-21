@@ -43,7 +43,7 @@ export class CardComponent implements OnInit {
 
   addComments():void {
     const dialogRef = this.dialog.open(DialogComponent, {
-      width: '250px',
+      width: '500px',
       data: {comments: this.track.comments}
     });
 

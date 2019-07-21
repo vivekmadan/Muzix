@@ -24,7 +24,7 @@ export class CardcontainerComponent implements OnInit {
   artistName: string;
   searchTracks: Array<Track>;
 
-  constructor(private muzixService: MuzixService,
+  constructor(private muzixService: MuzixService,22
     private routes: ActivatedRoute,
     private matSnackBar: MatSnackBar) {
     this.tracks = [];
